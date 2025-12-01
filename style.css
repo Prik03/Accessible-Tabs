@@ -1,0 +1,37 @@
+#tablist {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 15px;
+  border-bottom: 2px solid #ddd;
+}
+
+[role="tab"] {
+  padding: 8px 16px;
+  background: #eee;
+  border: none;
+  cursor: pointer;
+  border-radius: 6px 6px 0 0;
+}
+
+[role="tab"][aria-selected="true"] {
+  background: #007bff;
+  color: white;
+}
+
+[role="tabpanel"] {
+  padding: 15px;
+  border: 1px solid #ddd;
+  margin-top: 10px;
+  border-radius: 6px;
+}
+
+.code-block {
+  background: #1e1e1e;
+  color: #d4d4d4;
+  padding: 20px;
+  border-radius: 8px;
+  overflow-x: auto;
+  font-size: 14px;
+  margin-top: 20px;
+  line-height: 1.5;
+}
