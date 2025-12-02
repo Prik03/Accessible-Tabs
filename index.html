@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tablist Pattern Demo</title>
+    <title>Accessible Tabs</title>
 
     <link rel="stylesheet" href="style.css">
 
@@ -14,48 +14,103 @@
 
 <body>
 
-    <h2>Accessible Tablist Example</h2>
+    <body>
+        <main>
+            <center>
+                <h1>Accessible Tabs Demo</h1>
+            </center>
+            <div class="container">
 
-    <div role="tablist" aria-label="Sample Tabs" id="tablist">
-        <button role="tab" id="tab_1" aria-selected="true" tabindex="0" aria-controls="tabpanel_1">First Tab</button>
-        <button role="tab" id="tab_2" aria-selected="false" tabindex="-1" aria-controls="tabpanel_2">Second Tab</button>
-        <button role="tab" id="tab_3" aria-selected="false" tabindex="-1" aria-controls="tabpanel_3">Third Tab</button>
-        <button role="tab" id="tab_4" aria-selected="false" tabindex="-1" aria-controls="tabpanel_4">Fourth Tab</button>
-    </div>
+                <!-- LEFT COLUMN (Tablists) -->
+                <div class="left-column">
 
-    <div role="tabpanel" id="tabpanel_1" aria-labelledby="tab_1">
-        <p>Content for the first tab.</p>
-    </div>
-    <div role="tabpanel" id="tabpanel_2" aria-labelledby="tab_2" hidden>
-        <p>Content for the second tab.</p>
-    </div>
-    <div role="tabpanel" id="tabpanel_3" aria-labelledby="tab_3" hidden>
-        <p>Content for the third tab.</p>
-    </div>
-    <div role="tabpanel" id="tabpanel_4" aria-labelledby="tab_4" hidden>
-        <p>Content for the fourth tab.</p>
-    </div>
+                    <h2>Manual Activation Tablist</h2>
+
+                    <div role="tablist" aria-label="Manual Tabs" id="tablist_manual">
+                        <button role="tab" id="tab_1_manual" aria-selected="true" tabindex="0"
+                            aria-controls="tabpanel_1_manual">First Tab</button>
+                        <button role="tab" id="tab_2_manual" aria-selected="false" tabindex="-1"
+                            aria-controls="tabpanel_2_manual">Second Tab</button>
+                        <button role="tab" id="tab_3_manual" aria-selected="false" tabindex="-1"
+                            aria-controls="tabpanel_3_manual">Third Tab</button>
+                        <button role="tab" id="tab_4_manual" aria-selected="false" tabindex="-1"
+                            aria-controls="tabpanel_4_manual">Fourth Tab</button>
+                    </div>
+
+                    <div role="tabpanel" id="tabpanel_1_manual" aria-labelledby="tab_1_manual">
+                        <p>Content for the first tab.</p>
+                    </div>
+                    <div role="tabpanel" id="tabpanel_2_manual" aria-labelledby="tab_2_manual" hidden>
+                        <p>Content for the second tab.</p>
+                    </div>
+                    <div role="tabpanel" id="tabpanel_3_manual" aria-labelledby="tab_3_manual" hidden>
+                        <p>Content for the third tab.</p>
+                    </div>
+                    <div role="tabpanel" id="tabpanel_4_manual" aria-labelledby="tab_4_manual" hidden>
+                        <p>Content for the fourth tab.</p>
+                    </div>
 
 
-    <h3>HTML Code Structure</h3>
+                    <!-- Automatic Tablist -->
+                    <h2>Automatic Activation Tablist</h2>
 
-    <pre class="code-block">
+                    <div role="tablist" aria-label="Automatic Tabs" id="tablist">
+                        <button role="tab" id="tab_1" aria-selected="true" tabindex="0" aria-controls="tabpanel_1">First
+                            Tab</button>
+                        <button role="tab" id="tab_2" aria-selected="false" tabindex="-1"
+                            aria-controls="tabpanel_2">Second
+                            Tab</button>
+                        <button role="tab" id="tab_3" aria-selected="false" tabindex="-1"
+                            aria-controls="tabpanel_3">Third
+                            Tab</button>
+                        <button role="tab" id="tab_4" aria-selected="false" tabindex="-1"
+                            aria-controls="tabpanel_4">Fourth
+                            Tab</button>
+                    </div>
+
+                    <div role="tabpanel" id="tabpanel_1" aria-labelledby="tab_1">
+                        <p>Content for the first tab.</p>
+                    </div>
+                    <div role="tabpanel" id="tabpanel_2" aria-labelledby="tab_2" hidden>
+                        <p>Content for the second tab.</p>
+                    </div>
+                    <div role="tabpanel" id="tabpanel_3" aria-labelledby="tab_3" hidden>
+                        <p>Content for the third tab.</p>
+                    </div>
+                    <div role="tabpanel" id="tabpanel_4" aria-labelledby="tab_4" hidden>
+                        <p>Content for the fourth tab.</p>
+                    </div>
+
+                </div>
+
+
+                <!-- RIGHT COLUMN (Code Section) -->
+                <div class="right-column">
+                    <h3>HTML Code Structure</h3>
+
+                    <pre class="code-block">
 <code>
 &lt;div role="tablist" aria-label="Sample Tabs"&gt;
-    &lt;button role="tab" aria-selected="true" aria-controls="tabpanel_1"&gt;First Tab&lt;/button&gt;
-    &lt;button role="tab" aria-selected="false" aria-controls="tabpanel_2"&gt;Second Tab&lt;/button&gt;
-    &lt;button role="tab" aria-selected="false" aria-controls="tabpanel_3"&gt;Third Tab&lt;/button&gt;
-    &lt;button role="tab" aria-selected="false" aria-controls="tabpanel_4"&gt;Fourth Tab&lt;/button&gt;
+&lt;button role="tab" aria-selected="true" aria-controls="tabpanel_1" tabindex="0"&gt;First Tab&lt;/button&gt;
+&lt;button role="tab" aria-selected="false" aria-controls="tabpanel_2" tabindex="-1"&gt;Second Tab&lt;/button&gt;
+&lt;button role="tab" aria-selected="false" aria-controls="tabpanel_3" tabindex="-1"&gt;Third Tab&lt;/button&gt;
+&lt;button role="tab" aria-selected="false" aria-controls="tabpanel_4" tabindex="-1"&gt;Fourth Tab&lt;/button&gt;
 &lt;/div&gt;
 
-&lt;div role="tabpanel" id="tabpanel_1" aria-labelledby="tab_1"&gt;
-    Content for the first tab
-&lt;/div&gt;
+&lt;div role="tabpanel" id="tabpanel_1" aria-labelledby="tab_1"&gt;Content for the first tab&lt;/div&gt;
 &lt;div role="tabpanel" id="tabpanel_2" hidden&gt;Content for the second tab&lt;/div&gt;
 &lt;div role="tabpanel" id="tabpanel_3" hidden&gt;Content for the third tab&lt;/div&gt;
 &lt;div role="tabpanel" id="tabpanel_4" hidden&gt;Content for the fourth tab&lt;/div&gt;
 </code>
-    </pre>
+</pre>
+                </div>
+
+            </div>
+
+        </main>
+
+    </body>
+
 
 </body>
 

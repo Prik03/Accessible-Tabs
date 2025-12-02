@@ -1,9 +1,11 @@
 $(document).ready(function () {
 
-    const $tabs = $('[role="tab"]');
-    const $panels = $('[role="tabpanel"]');
+    /* AUTOMATIC TAB ACTIVATION */
 
-    function activateTab(index) {
+    const $tabs = $('[role="tab"]').not('#tablist_manual [role="tab"]');
+    const $panels = $('[role="tabpanel"]').not('#tablist_manual [role="tabpanel"]');
+
+    function activateAutoTab(index) {
         $tabs.each(function (i) {
             const $tab = $(this);
             const panelId = $tab.attr("aria-controls");
@@ -28,10 +30,12 @@ $(document).ready(function () {
     $tabs.each(function (index) {
         const $tab = $(this);
 
+        // Click activation
         $tab.on("click", function () {
-            activateTab(index);
+            activateAutoTab(index);
         });
 
+        // Keyboard activation
         $tab.on("keydown", function (e) {
             const key = e.key;
             let newIndex = index;
@@ -42,7 +46,58 @@ $(document).ready(function () {
             if (key === "End") newIndex = $tabs.length - 1;
             if (key === " " || key === "Enter") newIndex = index;
 
-            activateTab(newIndex);
+            activateAutoTab(newIndex);
+        });
+    });
+
+
+
+    /* MANUAL TAB ACTIVATION */
+
+    const $Manualtabs = $('#tablist_manual').find('[role="tab"]');
+
+    function activateManualTab(index) {
+        $Manualtabs.each(function (i) {
+            const $Manualtab = $(this);
+            const panelId = $Manualtab.attr("aria-controls");
+            const $panel = $("#" + panelId);
+
+            if (i === index) {
+                $Manualtab.attr({
+                    "aria-selected": "true",
+                    "tabindex": "0"
+                }).focus();
+                $panel.removeAttr("hidden");
+            } else {
+                $Manualtab.attr({
+                    "aria-selected": "false",
+                    "tabindex": "-1"
+                });
+                $panel.attr("hidden", true);
+            }
+        });
+    }
+
+    $Manualtabs.each(function (index) {
+        const $Manualtab = $(this);
+
+        // Click activation
+        $Manualtab.on("click", function () {
+            activateManualTab(index);
+        });
+
+        // Keyboard navigation only (NO automatic activation)
+        $Manualtab.on("keydown", function (e) {
+            const key = e.key;
+            let newIndex = index;
+
+            if (key === "ArrowRight") newIndex = (index + 1) % $Manualtabs.length;
+            if (key === "ArrowLeft") newIndex = (index - 1 + $Manualtabs.length) % $Manualtabs.length;
+            if (key === "Home") newIndex = 0;
+            if (key === "End") newIndex = $Manualtabs.length - 1;
+
+            // Move focus only
+            $Manualtabs.eq(newIndex).focus();
         });
     });
 });

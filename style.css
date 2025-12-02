@@ -1,8 +1,29 @@
-#tablist {
+/* MAIN 50/50 LAYOUT */
+.container {
+  display: flex;
+  gap: 20px;
+  padding: 20px;
+}
+
+.left-column,
+.right-column {
+  width: 50%;
+}
+
+/* Center content in code column */
+.right-column {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+/* TABLIST UI */
+[role="tablist"] {
   display: flex;
   gap: 10px;
-  margin-bottom: 15px;
+  margin-bottom: 10px;
   border-bottom: 2px solid #ddd;
+  padding-bottom: 5px;
 }
 
 [role="tab"] {
@@ -18,13 +39,15 @@
   color: white;
 }
 
+/* PANELS */
 [role="tabpanel"] {
   padding: 15px;
   border: 1px solid #ddd;
-  margin-top: 10px;
+  margin-bottom: 25px;
   border-radius: 6px;
 }
 
+/* CODE BLOCK */
 .code-block {
   background: #1e1e1e;
   color: #d4d4d4;
@@ -32,6 +55,16 @@
   border-radius: 8px;
   overflow-x: auto;
   font-size: 14px;
-  margin-top: 20px;
   line-height: 1.5;
+}
+
+/* MOBILE RESPONSIVE */
+@media (max-width: 900px) {
+  .container {
+    flex-direction: column;
+  }
+  .left-column,
+  .right-column {
+    width: 100%;
+  }
 }
