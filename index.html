@@ -28,26 +28,64 @@
 
                     <div role="tablist" aria-label="Manual Tabs" id="tablist_manual">
                         <button role="tab" id="tab_1_manual" aria-selected="true" tabindex="0"
-                            aria-controls="tabpanel_1_manual">First Tab</button>
+                            aria-controls="tabpanel_1_manual">role[tablist]</button>
                         <button role="tab" id="tab_2_manual" aria-selected="false" tabindex="-1"
-                            aria-controls="tabpanel_2_manual">Second Tab</button>
+                            aria-controls="tabpanel_2_manual">role[tab]</button>
                         <button role="tab" id="tab_3_manual" aria-selected="false" tabindex="-1"
-                            aria-controls="tabpanel_3_manual">Third Tab</button>
+                            aria-controls="tabpanel_3_manual">role[tabpanel]</button>
                         <button role="tab" id="tab_4_manual" aria-selected="false" tabindex="-1"
-                            aria-controls="tabpanel_4_manual">Fourth Tab</button>
+                            aria-controls="tabpanel_4_manual">role[presentation]</button>
                     </div>
 
                     <div role="tabpanel" id="tabpanel_1_manual" aria-labelledby="tab_1_manual">
-                        <p>Content for the first tab.</p>
+                        <p>
+                        <ul>
+                            <li><strong>role="tablist"</strong> is used on the parent wrapper to notify assistive
+                                technology that it contains multiple tabs.</li>
+                            <li>It groups all tabs together and provides context like: "This is a tablist with n tabs."
+                            </li>
+                        </ul>
+
+                        </p>
                     </div>
                     <div role="tabpanel" id="tabpanel_2_manual" aria-labelledby="tab_2_manual" hidden>
-                        <p>Content for the second tab.</p>
+                        <p>
+                        <ul>
+                            <li>Each tab uses <strong>role="tab"</strong> so screen readers know these are selectable
+                                items.</li>
+                            <li>Only one tab is active at a time → marked with <strong>aria-selected="true"</strong> and
+                                <strong>tabindex="0"</strong>.
+                            </li>
+                            <li>Inactive tabs have <strong>aria-selected="false"</strong> and
+                                <strong>tabindex="-1"</strong> to prevent accidental focus.
+                            </li>
+                            <li><strong>aria-controls="tabpanel_x"</strong> links each tab to the panel it controls.
+                            </li>
+                        </ul>
+                        </p>
                     </div>
                     <div role="tabpanel" id="tabpanel_3_manual" aria-labelledby="tab_3_manual" hidden>
-                        <p>Content for the third tab.</p>
+                        <p>
+                        <ul>
+                            <li>
+                                <strong>role="tabpanel"</strong> is used on the content panels associated with each
+                                tab.
+                            </li>
+                            <li>
+                                <strong>aria-labelledby="tab_x"</strong> connects the panel back to its tab.
+                            </li>
+                            <li>
+                                Hidden panels use the <strong>hidden</strong> attribute but remain available for screen
+                                readers when active.
+                            </li>
+                        </ul>
+                        </p>
                     </div>
                     <div role="tabpanel" id="tabpanel_4_manual" aria-labelledby="tab_4_manual" hidden>
-                        <p>Content for the fourth tab.</p>
+                        <p>
+                            <strong>role="presentation"</strong> tells screen readers to ignore the element because it
+                            is only used for layout or design.
+                        </p>
                     </div>
 
 
@@ -86,7 +124,7 @@
 
                 <!-- RIGHT COLUMN (Code Section) -->
                 <div class="right-column">
-                    <h3>HTML Code Structure</h3>
+                    <h2>HTML Code Structure</h2>
 
                     <pre class="code-block">
 <code>
@@ -105,6 +143,28 @@
 </pre>
                 </div>
 
+            </div>
+
+            <div class="exeception">
+                <h2>Alternative List Structure for Tabs</h2>
+                <pre class="code-block">
+<code>
+&lt;ul role="tablist" aria-label="Sample Tabs"&gt;
+&lt;li role="presentation"&gt;
+&lt;button role="tab" aria-selected="true" aria-controls="tabpanel_1" tabindex="0"&gt;First Tab&lt;/button&gt;
+&lt;/li&gt;
+&lt;li role="presentation"&gt;
+&lt;button role="tab" aria-selected="false" aria-controls="tabpanel_2" tabindex="-1"&gt;Second Tab&lt;/button&gt;
+&lt;/li&gt;
+&lt;li role="presentation"&gt;
+&lt;button role="tab" aria-selected="false" aria-controls="tabpanel_3" tabindex="-1"&gt;Third Tab&lt;/button&gt;
+&lt;/li&gt;
+&lt;li role="presentation"&gt;
+&lt;button role="tab" aria-selected="false" aria-controls="tabpanel_4" tabindex="-1"&gt;Fourth Tab&lt;/button&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+</code>
+</pre>
             </div>
 
         </main>

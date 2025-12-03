@@ -30,12 +30,10 @@ $(document).ready(function () {
     $tabs.each(function (index) {
         const $tab = $(this);
 
-        // Click activation
         $tab.on("click", function () {
             activateAutoTab(index);
         });
 
-        // Keyboard activation
         $tab.on("keydown", function (e) {
             const key = e.key;
             let newIndex = index;
@@ -81,12 +79,10 @@ $(document).ready(function () {
     $Manualtabs.each(function (index) {
         const $Manualtab = $(this);
 
-        // Click activation
         $Manualtab.on("click", function () {
             activateManualTab(index);
         });
 
-        // Keyboard navigation only (NO automatic activation)
         $Manualtab.on("keydown", function (e) {
             const key = e.key;
             let newIndex = index;
@@ -96,7 +92,6 @@ $(document).ready(function () {
             if (key === "Home") newIndex = 0;
             if (key === "End") newIndex = $Manualtabs.length - 1;
 
-            // Move focus only
             $Manualtabs.eq(newIndex).focus();
         });
     });
