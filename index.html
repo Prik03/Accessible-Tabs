@@ -19,11 +19,50 @@
             <center>
                 <h1>Accessible Tabs Demo</h1>
             </center>
+
+            <div class="explanation-section">
+                <h2>How We Created These Tabs Using JavaScript (In Simple Words)</h2>
+
+                <h3>🔹 1. First, we select all tab buttons using JavaScript</h3>
+                <p>This helps us detect which tab the user is interacting with.</p>
+
+                <h3>🔹 2. Then we listen for user actions</h3>
+                <p>We handle two types of actions:</p>
+                <ul>
+                    <li><strong>Click</strong> → when the user taps or clicks on a tab</li>
+                    <li><strong>Keyboard keys</strong> → Arrow Left, Arrow Right, Enter, Space</li>
+                </ul>
+
+                <h3>🔹 3. For Manual Tabs</h3>
+                <ul>
+                    <li>Arrow keys <strong>only move focus</strong> between tabs</li>
+                    <li>Content changes <strong>only</strong> when user presses Enter, Space, or clicks the tab</li>
+                </ul>
+                <p>JavaScript waits for the user to "activate" the tab.</p>
+
+                <h3>🔹 4. For Automatic Tabs</h3>
+                <p>When user presses Left or Right arrow keys:</p>
+                <ul>
+                    <li>The tab changes instantly</li>
+                    <li>The active panel updates</li>
+                    <li>ARIA attributes update immediately</li>
+                </ul>
+
+                <h3>🔹 5. JavaScript shows one panel and hides others</h3>
+                <ul>
+                    <li>Sets <code>aria-selected="true"</code></li>
+                    <li>Sets <code>tabindex="0"</code></li>
+                    <li>Removes <code>hidden</code> from the active panel</li>
+                    <li>Adds <code>hidden</code> to all other panels</li>
+                </ul>
+
+                <h2>In One Line</h2>
+                <p><strong>Manual tabs give more control → Automatic tabs react instantly.</strong></p>
+            </div>
+
             <div class="container">
 
-                <!-- LEFT COLUMN (Tablists) -->
                 <div class="left-column">
-
                     <h2>Manual Activation Tablist</h2>
 
                     <div role="tablist" aria-label="Manual Tabs" id="tablist_manual">
@@ -38,72 +77,42 @@
                     </div>
 
                     <div role="tabpanel" id="tabpanel_1_manual" aria-labelledby="tab_1_manual">
-                        <p>
                         <ul>
-                            <li><strong>role="tablist"</strong> is used on the parent wrapper to notify assistive
-                                technology that it contains multiple tabs.</li>
-                            <li>It groups all tabs together and provides context like: "This is a tablist with n tabs."
-                            </li>
+                            <li><strong>role="tablist"</strong> is used on the parent wrapper.</li>
+                            <li>It groups all tabs and informs assistive tech.</li>
                         </ul>
-
-                        </p>
                     </div>
+
                     <div role="tabpanel" id="tabpanel_2_manual" aria-labelledby="tab_2_manual" hidden>
-                        <p>
                         <ul>
-                            <li>Each tab uses <strong>role="tab"</strong> so screen readers know these are selectable
-                                items.</li>
-                            <li>Only one tab is active at a time → marked with <strong>aria-selected="true"</strong> and
-                                <strong>tabindex="0"</strong>.
-                            </li>
-                            <li>Inactive tabs have <strong>aria-selected="false"</strong> and
-                                <strong>tabindex="-1"</strong> to prevent accidental focus.
-                            </li>
-                            <li><strong>aria-controls="tabpanel_x"</strong> links each tab to the panel it controls.
-                            </li>
+                            <li><strong>role="tab"</strong> allows screen readers to understand tabs.</li>
+                            <li>Only one is active at a time, marked by aria-selected.</li>
                         </ul>
-                        </p>
                     </div>
+
                     <div role="tabpanel" id="tabpanel_3_manual" aria-labelledby="tab_3_manual" hidden>
-                        <p>
                         <ul>
-                            <li>
-                                <strong>role="tabpanel"</strong> is used on the content panels associated with each
-                                tab.
-                            </li>
-                            <li>
-                                <strong>aria-labelledby="tab_x"</strong> connects the panel back to its tab.
-                            </li>
-                            <li>
-                                Hidden panels use the <strong>hidden</strong> attribute but remain available for screen
-                                readers when active.
-                            </li>
+                            <li><strong>role="tabpanel"</strong> is used for content panels.</li>
+                            <li>Connected with aria-labelledby.</li>
                         </ul>
-                        </p>
                     </div>
+
                     <div role="tabpanel" id="tabpanel_4_manual" aria-labelledby="tab_4_manual" hidden>
-                        <p>
-                            <strong>role="presentation"</strong> tells screen readers to ignore the element because it
-                            is only used for layout or design.
-                        </p>
+                        <p><strong>role="presentation"</strong> tells screen readers to ignore the element.</p>
                     </div>
 
-
-                    <!-- Automatic Tablist -->
+                    <!-- AUTOMATIC TABLIST -->
                     <h2>Automatic Activation Tablist</h2>
 
                     <div role="tablist" aria-label="Automatic Tabs" id="tablist">
                         <button role="tab" id="tab_1" aria-selected="true" tabindex="0" aria-controls="tabpanel_1">First
                             Tab</button>
                         <button role="tab" id="tab_2" aria-selected="false" tabindex="-1"
-                            aria-controls="tabpanel_2">Second
-                            Tab</button>
+                            aria-controls="tabpanel_2">Second Tab</button>
                         <button role="tab" id="tab_3" aria-selected="false" tabindex="-1"
-                            aria-controls="tabpanel_3">Third
-                            Tab</button>
+                            aria-controls="tabpanel_3">Third Tab</button>
                         <button role="tab" id="tab_4" aria-selected="false" tabindex="-1"
-                            aria-controls="tabpanel_4">Fourth
-                            Tab</button>
+                            aria-controls="tabpanel_4">Fourth Tab</button>
                     </div>
 
                     <div role="tabpanel" id="tabpanel_1" aria-labelledby="tab_1">
@@ -118,14 +127,11 @@
                     <div role="tabpanel" id="tabpanel_4" aria-labelledby="tab_4" hidden>
                         <p>Content for the fourth tab.</p>
                     </div>
-
                 </div>
 
-
-                <!-- RIGHT COLUMN (Code Section) -->
+                <!-- RIGHT COLUMN -->
                 <div class="right-column">
                     <h2>HTML Code Structure</h2>
-
                     <pre class="code-block">
 <code>
 &lt;div role="tablist" aria-label="Sample Tabs"&gt;
@@ -142,7 +148,6 @@
 </code>
 </pre>
                 </div>
-
             </div>
 
             <div class="exeception">
@@ -150,18 +155,23 @@
                 <pre class="code-block">
 <code>
 &lt;ul role="tablist" aria-label="Sample Tabs"&gt;
-&lt;li role="presentation"&gt;
-&lt;button role="tab" aria-selected="true" aria-controls="tabpanel_1" tabindex="0"&gt;First Tab&lt;/button&gt;
-&lt;/li&gt;
-&lt;li role="presentation"&gt;
-&lt;button role="tab" aria-selected="false" aria-controls="tabpanel_2" tabindex="-1"&gt;Second Tab&lt;/button&gt;
-&lt;/li&gt;
-&lt;li role="presentation"&gt;
-&lt;button role="tab" aria-selected="false" aria-controls="tabpanel_3" tabindex="-1"&gt;Third Tab&lt;/button&gt;
-&lt;/li&gt;
-&lt;li role="presentation"&gt;
-&lt;button role="tab" aria-selected="false" aria-controls="tabpanel_4" tabindex="-1"&gt;Fourth Tab&lt;/button&gt;
-&lt;/li&gt;
+
+ &lt;li role="presentation"&gt;
+    &lt;button role="tab" aria-selected="true" aria-controls="tabpanel_1" tabindex="0"&gt;First Tab&lt;/button&gt;
+  &lt;/li&gt; 
+
+  &lt;li role="presentation"&gt; 
+    &lt;button role="tab" aria-selected="false" aria-controls="tabpanel_2" tabindex="-1"&gt;Second Tab&lt;/button&gt;
+  &lt;/li&gt; 
+
+  &lt;li role="presentation"&gt;
+    &lt;button role="tab" aria-selected="false" aria-controls="tabpanel_3" tabindex="-1"&gt;Third Tab&lt;/button&gt; 
+   &lt;/li&gt;
+
+    &lt;li role="presentation"&gt; 
+        &lt;button role="tab" aria-selected="false" aria-controls="tabpanel_4" tabindex="-1"&gt;Fourth Tab&lt;/button&gt;
+    &lt;/li&gt; 
+
 &lt;/ul&gt;
 </code>
 </pre>
