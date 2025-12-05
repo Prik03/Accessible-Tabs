@@ -20,46 +20,6 @@
                 <h1>Accessible Tabs Demo</h1>
             </center>
 
-            <div class="explanation-section">
-                <h2>How We Created These Tabs Using JavaScript (In Simple Words)</h2>
-
-                <h3>🔹 1. First, we select all tab buttons using JavaScript</h3>
-                <p>This helps us detect which tab the user is interacting with.</p>
-
-                <h3>🔹 2. Then we listen for user actions</h3>
-                <p>We handle two types of actions:</p>
-                <ul>
-                    <li><strong>Click</strong> → when the user taps or clicks on a tab</li>
-                    <li><strong>Keyboard keys</strong> → Arrow Left, Arrow Right, Enter, Space</li>
-                </ul>
-
-                <h3>🔹 3. For Manual Tabs</h3>
-                <ul>
-                    <li>Arrow keys <strong>only move focus</strong> between tabs</li>
-                    <li>Content changes <strong>only</strong> when user presses Enter, Space, or clicks the tab</li>
-                </ul>
-                <p>JavaScript waits for the user to "activate" the tab.</p>
-
-                <h3>🔹 4. For Automatic Tabs</h3>
-                <p>When user presses Left or Right arrow keys:</p>
-                <ul>
-                    <li>The tab changes instantly</li>
-                    <li>The active panel updates</li>
-                    <li>ARIA attributes update immediately</li>
-                </ul>
-
-                <h3>🔹 5. JavaScript shows one panel and hides others</h3>
-                <ul>
-                    <li>Sets <code>aria-selected="true"</code></li>
-                    <li>Sets <code>tabindex="0"</code></li>
-                    <li>Removes <code>hidden</code> from the active panel</li>
-                    <li>Adds <code>hidden</code> to all other panels</li>
-                </ul>
-
-                <h2>In One Line</h2>
-                <p><strong>Manual tabs give more control → Automatic tabs react instantly.</strong></p>
-            </div>
-
             <div class="container">
 
                 <div class="left-column">
@@ -67,13 +27,13 @@
 
                     <div role="tablist" aria-label="Manual Tabs" id="tablist_manual">
                         <button role="tab" id="tab_1_manual" aria-selected="true" tabindex="0"
-                            aria-controls="tabpanel_1_manual">role[tablist]</button>
+                            aria-controls="tabpanel_1_manual">tablist</button>
                         <button role="tab" id="tab_2_manual" aria-selected="false" tabindex="-1"
-                            aria-controls="tabpanel_2_manual">role[tab]</button>
+                            aria-controls="tabpanel_2_manual">tab</button>
                         <button role="tab" id="tab_3_manual" aria-selected="false" tabindex="-1"
-                            aria-controls="tabpanel_3_manual">role[tabpanel]</button>
+                            aria-controls="tabpanel_3_manual">tabpanel</button>
                         <button role="tab" id="tab_4_manual" aria-selected="false" tabindex="-1"
-                            aria-controls="tabpanel_4_manual">role[presentation]</button>
+                            aria-controls="tabpanel_4_manual">presentation</button>
                     </div>
 
                     <div role="tabpanel" id="tabpanel_1_manual" aria-labelledby="tab_1_manual">
@@ -105,27 +65,36 @@
                     <h2>Automatic Activation Tablist</h2>
 
                     <div role="tablist" aria-label="Automatic Tabs" id="tablist">
-                        <button role="tab" id="tab_1" aria-selected="true" tabindex="0" aria-controls="tabpanel_1">First
-                            Tab</button>
+                        <button role="tab" id="tab_1" aria-selected="true" tabindex="0"
+                            aria-controls="tabpanel_1">tablist</button>
                         <button role="tab" id="tab_2" aria-selected="false" tabindex="-1"
-                            aria-controls="tabpanel_2">Second Tab</button>
+                            aria-controls="tabpanel_2">tab</button>
                         <button role="tab" id="tab_3" aria-selected="false" tabindex="-1"
-                            aria-controls="tabpanel_3">Third Tab</button>
+                            aria-controls="tabpanel_3">tabpanel</button>
                         <button role="tab" id="tab_4" aria-selected="false" tabindex="-1"
-                            aria-controls="tabpanel_4">Fourth Tab</button>
+                            aria-controls="tabpanel_4">presentation</button>
                     </div>
 
                     <div role="tabpanel" id="tabpanel_1" aria-labelledby="tab_1">
-                        <p>Content for the first tab.</p>
+                        <ul>
+                            <li><strong>role="tablist"</strong> is used on the parent wrapper.</li>
+                            <li>It groups all tabs and informs assistive tech.</li>
+                        </ul>
                     </div>
                     <div role="tabpanel" id="tabpanel_2" aria-labelledby="tab_2" hidden>
-                        <p>Content for the second tab.</p>
+                        <ul>
+                            <li><strong>role="tab"</strong> allows screen readers to understand tabs.</li>
+                            <li>Only one is active at a time, marked by aria-selected.</li>
+                        </ul>
                     </div>
                     <div role="tabpanel" id="tabpanel_3" aria-labelledby="tab_3" hidden>
-                        <p>Content for the third tab.</p>
+                        <ul>
+                            <li><strong>role="tabpanel"</strong> is used for content panels.</li>
+                            <li>Connected with aria-labelledby.</li>
+                        </ul>
                     </div>
                     <div role="tabpanel" id="tabpanel_4" aria-labelledby="tab_4" hidden>
-                        <p>Content for the fourth tab.</p>
+                        <p><strong>role="presentation"</strong> tells screen readers to ignore the element.</p>
                     </div>
                 </div>
 
@@ -175,6 +144,46 @@
 &lt;/ul&gt;
 </code>
 </pre>
+            </div>
+
+            <div class="explanation-section">
+                <h2>How We Created These Tabs Using JavaScript (In Simple Words)</h2>
+
+                <h3>🔹 1. First, we select all tab buttons using JavaScript</h3>
+                <p>This helps us detect which tab the user is interacting with.</p>
+
+                <h3>🔹 2. Then we listen for user actions</h3>
+                <p>We handle two types of actions:</p>
+                <ul>
+                    <li><strong>Click</strong> → when the user taps or clicks on a tab</li>
+                    <li><strong>Keyboard keys</strong> → Arrow Left, Arrow Right, Enter, Space</li>
+                </ul>
+
+                <h3>🔹 3. For Manual Tabs</h3>
+                <ul>
+                    <li>Arrow keys <strong>only move focus</strong> between tabs</li>
+                    <li>Content changes <strong>only</strong> when user presses Enter, Space, or clicks the tab</li>
+                </ul>
+                <p>JavaScript waits for the user to "activate" the tab.</p>
+
+                <h3>🔹 4. For Automatic Tabs</h3>
+                <p>When user presses Left or Right arrow keys:</p>
+                <ul>
+                    <li>The tab changes instantly</li>
+                    <li>The active panel updates</li>
+                    <li>ARIA attributes update immediately</li>
+                </ul>
+
+                <h3>🔹 5. JavaScript shows one panel and hides others</h3>
+                <ul>
+                    <li>Sets <code>aria-selected="true"</code></li>
+                    <li>Sets <code>tabindex="0"</code></li>
+                    <li>Removes <code>hidden</code> from the active panel</li>
+                    <li>Adds <code>hidden</code> to all other panels</li>
+                </ul>
+
+                <h2>In One Line</h2>
+                <p><strong>Manual tabs give more control → Automatic tabs react instantly.</strong></p>
             </div>
 
         </main>
